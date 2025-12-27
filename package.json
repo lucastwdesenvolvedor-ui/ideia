@@ -1,0 +1,52 @@
+{
+
+  "name": "ideia",
+
+  "version": "1.0.0",
+
+  "type": "module",
+
+  "main": "serve.js",
+
+  "scripts": {
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "start": "node server.js"
+
+  },
+
+  "repository": {
+
+    "type": "git",
+
+    "url": "git+https://github.com/lucastwdesenvolvedor-ui/ideia.git"
+
+  },
+
+  "keywords": [],
+
+  "author": "",
+
+  "license": "ISC",
+
+  "bugs": {
+
+    "url": "https://github.com/lucastwdesenvolvedor-ui/ideia/issues"
+
+  },
+
+  "homepage": "https://github.com/lucastwdesenvolvedor-ui/ideia#readme",
+
+  "dependencies": {
+
+    "@prisma/client": "^6.19.1",
+
+    "express": "^5.2.1",
+
+    "prisma": "^6.19.1"
+
+  }
+
+}
+
