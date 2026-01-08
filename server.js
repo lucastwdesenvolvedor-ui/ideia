@@ -1,11 +1,10 @@
 import express from 'express';
 import path from 'path';    
-import pkg from '@prisma/client';
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 
-const { PrismaClient } = pkg;
-const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static('public'));
@@ -17,17 +16,16 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/all/devs', async (req, res) => {
-    const devs = await prisma.dev.findMany();
-    res.json(devs)
-});
-
-app.post('/cret/dev', async (req, res) => {
-    const {nome , skills, img} = req.body;
-    const newDev = await prisma.Dev.create({
-        data: {nome, skills, img}
-    });
-    res.json(newDev);
+app.get('/all/produtos', async (req, res) => {
+    const produtos = req.params;
+    try{
+        const response = await fetch('https://apirepository-production.up.railway.app/produtos');
+   
+    const data = await response.json();
+    res.json(data);
+       }catch (erro) {
+    res.status(500).json({ erro: "Erro ao buscar dados externos" });
+  }
 });
 
 app.listen(PORT, () => {

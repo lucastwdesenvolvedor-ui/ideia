@@ -3,28 +3,31 @@ let botaoPesquisar = document.getElementById('botao-pesquisar');
 
 async function fetchDevs(){
 
- const res = await fetch('/all/devs');
+ const res = await fetch('/all/produtos');
  return await res.json();
 }
 
 
-function addDev(dev){
+function addDev(Produto){
 
 const card = document.createElement('div');
 card.className = 'card';
 
 const img = document.createElement('img');
-img.src = dev.img;
-img.alt = 'Dev';
+img.src = Produto.imagem_url;
+img.alt = 'imagem do produto';
 
 const h3 = document.createElement('h3');
-h3.textContent = dev.nome;
+h3.textContent = Produto.produto;
 
 const p = document.createElement('p');
-p.textContent = dev.skills;
+p.textContent = Produto.descricao;
 
 const button = document.createElement('button');
-button.textContent = 'Ver Perfil';
+button.textContent = 'Ver Produto';
+button.addEventListener('click', () => {
+    window.location.href = Produto.link;
+});
 
 card.append( img, h3, p, button)
  return card;
@@ -56,14 +59,14 @@ inputSearch.addEventListener('input', () => {
         return;
     }
 
-    const filtrados = devsData.filter(dev =>
+    const filtrados = devsData.fi.lter(dev =>
         dev.nome.toLowerCase().includes(Termo) ||
         dev.skills.toLowerCase().includes(Termo)
     );
 
     renderDevs(filtrados);
     if(filtrados.length === 0){
-        devsContainer.innerHTML = '<p>Nenhum desenvolvedor encontrado.</p>';
+        devsContainer.innerHTML = '<p>Nenhum Produto encontrado.</p>';
     }
 
 });
