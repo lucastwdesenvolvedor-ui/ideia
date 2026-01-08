@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/all/produtos', async (req, res) => {
     const produtos = req.params;
     try{
-        const response = await fetch('https://apirepository-production.up.railway.app/produtos');
+        const response = await fetch(`${process.env.API_URL}`);
    
     const data = await response.json();
     res.json(data);
