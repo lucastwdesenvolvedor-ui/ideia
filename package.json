@@ -40,8 +40,11 @@
 
   "dependencies": {
 
+<<<<<<< HEAD
     "cors": "^2.8.5",
 
+=======
+>>>>>>> dbad3580c827862463ee16dc79aabbe55d522774
     "express": "^5.2.1"
 
   }
